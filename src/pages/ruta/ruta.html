@@ -1,0 +1,58 @@
+<!--
+  Generated template for the RutaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ruta calculada</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only color="royal">
+          <ion-icon name="share"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="container-fluid embed-responsive">
+      <iframe embed-responsive-item
+      width="100%"
+      height="450"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAq0PAs-0vkRQnBPJFh_rj2aP36ydI8420
+        &q=Mexico" allowfullscreen>
+    </iframe>
+
+    <ion-list>
+        
+          <ion-item>
+            <ion-label floating>Numero de casetas:</ion-label>
+            <ion-input type="num" disabled></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label floating>Costo de casetas:</ion-label>
+            <ion-input type="num" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>Litros de combustible:</ion-label>
+              <ion-input type="num" disabled></ion-input>
+            </ion-item>
+          <ion-item>
+              <ion-label floating>Costo de combustible:</ion-label>
+              <ion-input type="num" disabled></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Costo de total:</ion-label>
+                <ion-input type="num" disabled></ion-input>
+              </ion-item>
+        </ion-list>
+  </div>  
+
+  
+</ion-content>
