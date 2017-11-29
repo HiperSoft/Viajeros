@@ -1,7 +1,6 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Inicio</ion-title>
-    <img class="banner" src="../../assets/imgs/logocompleto.png">
   </ion-navbar>
 </ion-header>
 
@@ -10,63 +9,42 @@
   <h1 class="text-center">App Viajeros</h1>
   
   <ion-searchbar (input)="getItems($event)"></ion-searchbar>
-
-    <ion-item>
-        <ion-label stacked>Origen</ion-label>
+	<ion-item>
+		<ion-label stacked>Origen</ion-label>
         <ion-input type="text"></ion-input>
-      </ion-item>
-      <button ion-button icon-only>
+        <button item-right ion-button icon-only>
           <ion-icon name="locate"></ion-icon>
         </button>
+	</ion-item>     
         <ion-item>
             <ion-label stacked> <ion-icon name="pin"></ion-icon> Destino</ion-label>
             <ion-input type="text"></ion-input>
-          </ion-item>
+        </ion-item>
+	<ion-list>
+	  <ion-item>
+	    <ion-label>Tipo de vehiculo</ion-label>
+	    <ion-select [(ngModel)]="vehiculo" (ionChange)='f()'>
+	      <ion-option value="auto">Automovil</ion-option>
+	      <ion-option value="moto">Motocicleta</ion-option>
+	      <ion-option value="camion">Camión</ion-option>
+	      <ion-option value="autobus">Autobus</ion-option>
 
-          <ion-list>
-              <ion-item>
-                <ion-icon name="car" item-start></ion-icon>
-                Tipo de vehiculo
-                  <ion-list radio-group>
-                      <ion-list-header>
-                        Tipo de vehiculo
-                      </ion-list-header>
-                    
-                      <ion-item>
-                        <ion-label>Motocicleta</ion-label>
-                        <ion-radio value="moto"></ion-radio>
-                      </ion-item>
-                    
-                      <ion-item>
-                        <ion-label>Automovil</ion-label>
-                        <ion-radio value="auto" checked="true"></ion-radio>
-                      </ion-item>
-                    
-                      <ion-item>
-                        <ion-label>2 ejes</ion-label>
-                        <ion-radio value="2ejes"></ion-radio>
-                      </ion-item>
-                      <ion-item>
-                          <ion-label>3 ejes</ion-label>
-                          <ion-radio value="3ejes"></ion-radio>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>4 ejes</ion-label>
-                            <ion-radio value="4ejes"></ion-radio>
-                          </ion-item>
-                          <ion-item>
-                              <ion-label>5 ejes</ion-label>
-                              <ion-radio value="5ejes"></ion-radio>
-                            </ion-item>
-                            <ion-item>
-                                <ion-label>6 ejes</ion-label>
-                                <ion-radio value="6ejes"></ion-radio>
-                              </ion-item>
-                    </ion-list>
-                <ion-icon name="bus" item-end></ion-icon>
-              </ion-item>
-            </ion-list>
+	    </ion-select>
+	  </ion-item>
+	</ion-list>
+	<ion-list *ngIf="hola">
+	  <ion-item>
+	    <ion-label># De Ejes </ion-label>
+	    <ion-select [(ngModel)]="ejes">
+	      <ion-option value="2jes">2 ejes</ion-option>
+	      <ion-option value="3ejes">3 ejes</ion-option>
+	      <ion-option value="4ejes">4 ejes</ion-option>
+	      <ion-option value="5ejes">5 ejes</ion-option>
+	      <ion-option value="6ejes">6 ejes</ion-option>
 
+	    </ion-select>
+	  </ion-item>
+	</ion-list>
           <ion-item>
               <ion-label> Calcular combustible</ion-label>
               <ion-toggle checked="false"></ion-toggle>
