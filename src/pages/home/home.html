@@ -1,72 +1,91 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Inicio</ion-title>
+  <ion-navbar color="madera">
+    <ion-title></ion-title>
+    <img src="../assets/imgs/logo.png">
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  
-  <h1 class="text-center"> Viajeros</h1>
-  <ion-item>
-		<ion-label stacked>Origen</ion-label>
-    <ion-input type="text" [(ngModel)]="origen" id="origen"></ion-input>
-		<button item-right ion-button (click)="getLocation()" icon-only >
-			<ion-icon name="locate"></ion-icon>
-		</button>  
-	</ion-item>     
+  <ion-grid>
+    <ion-row>
+      <ion-col>
         <ion-item>
-            <ion-label stacked> <ion-icon name="pin"></ion-icon> Destino</ion-label>
-            <ion-input type="text" [(ngModel)]="destino"></ion-input>
+          <ion-label stacked>Origen</ion-label>
+          <ion-input type="text" [(ngModel)]="origen" id="origen"></ion-input>
+          <button item-right ion-button (click)="getLocation()" icon-only>
+            <ion-icon name="locate"></ion-icon>
+          </button>
         </ion-item>
-	<ion-list>
-	  <ion-item>
-	    <ion-label>Tipo de vehiculo</ion-label>
-	    <ion-select [(ngModel)]="vehiculo">
-	      <ion-option value="1">Automovil</ion-option>
-	      <ion-option value="0">Motocicleta</ion-option>
-	      <ion-option value="2">Autobus dos ejes</ion-option>
-	      <ion-option value="3">Autobus tres ejes</ion-option>
-	      <ion-option value="4">Autobus cuatro ejes</ion-option>
-				<ion-option value="5">Camión dos ejes</ion-option>
-				<ion-option value="6">Camión tres ejes</ion-option>
-				<ion-option value="7">Camión cuatro ejes</ion-option>
-				<ion-option value="8">Camión cinco ejes</ion-option>
-				<ion-option value="9">Camión seis ejes</ion-option>
-				<ion-option value="10">Camión siete ejes</ion-option>
-				<ion-option value="11">Camión ocho ejes</ion-option>
-				<ion-option value="12">Camión nueve ejes</ion-option>
-	    </ion-select>
-	  </ion-item>
-	</ion-list>
-	<ion-item>
-	    <ion-label>Tipo de Ruta</ion-label>
-	    <ion-select [(ngModel)]="truta">
-	      <ion-option value="0">Preferentemente Libre</ion-option>
-	      <ion-option value="1">Preferentemente Cuota</ion-option>
-	      <ion-option value="2">Ruta Sugerida</ion-option>
-	    </ion-select>
-		</ion-item>
+        <ion-item>
+          <ion-label stacked>
+            <ion-icon name="pin"></ion-icon> Destino</ion-label>
+          <ion-input type="text" [(ngModel)]="destino"></ion-input>
+        </ion-item>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <ion-icon name="car"></ion-icon> Tipo de vehiculo</ion-label>
+            <ion-select [(ngModel)]="vehiculo">
+              <ion-option value="1">
+                <ion-icon name="car"></ion-icon> Automovil</ion-option>
+              <ion-option value="0">
+                <ion-icon name="bicycle"></ion-icon> Motocicleta</ion-option>
+              <ion-option value="2">
+                <ion-icon name="bus"></ion-icon> Autobus dos ejes</ion-option>
+              <ion-option value="3">
+                <ion-icon name="bus"></ion-icon> Autobus tres ejes</ion-option>
+              <ion-option value="4">
+                <ion-icon name="bus"></ion-icon> Autobus cuatro ejes</ion-option>
+              <ion-option value="5">Camión dos ejes</ion-option>
+              <ion-option value="6">Camión tres ejes</ion-option>
+              <ion-option value="7">Camión cuatro ejes</ion-option>
+              <ion-option value="8">Camión cinco ejes</ion-option>
+              <ion-option value="9">Camión seis ejes</ion-option>
+              <ion-option value="10">Camión siete ejes</ion-option>
+              <ion-option value="11">Camión ocho ejes</ion-option>
+              <ion-option value="12">Camión nueve ejes</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <ion-label>
+            <ion-icon name="compass"></ion-icon> Tipo de Ruta</ion-label>
+          <ion-select [(ngModel)]="truta">
+            <ion-option value="0">
+              <ion-icon name="trending-up"></ion-icon> Preferentemente Libre</ion-option>
+            <ion-option value="1">
+              <ion-icon name="logo-usd"></ion-icon> Preferentemente Cuota</ion-option>
+            <ion-option value="2">
+              <ion-icon name="star"></ion-icon> Ruta Sugerida</ion-option>
+          </ion-select>
+        </ion-item>
 
-		<ion-item>
-				<ion-label> Calcular combustible</ion-label>
-				<ion-toggle checked="false" [(ngModel)]="questioncombust"></ion-toggle>
-		</ion-item>
-		<ion-list *ngIf="questioncombust">
-		<ion-item>
-	    <ion-label>Tipo de Cambustible</ion-label>
-	    <ion-select [(ngModel)]="tcombustible">
-	      <ion-option value="0">Magna</ion-option>
-	      <ion-option value="1">Premium</ion-option>
-	      <ion-option value="2">Diesel</ion-option>
-	      <ion-option value="3">Gas</ion-option>
-	    </ion-select>
-		</ion-item>
-		<ion-item>
-			<ion-label stacked> Rendimiento km/L</ion-label>
-			<ion-input type="number" [(ngModel)]="rendimiento"></ion-input>
-		</ion-item>
-	</ion-list>
-	
-		<button ion-button (click)="calcular()">Calcular</button>
-	
+        <ion-item>
+          <ion-label>
+            <ion-icon name="speedometer"></ion-icon> Calcular combustible</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="questioncombust"></ion-toggle>
+        </ion-item>
+        <ion-list *ngIf="questioncombust">
+          <ion-item>
+            <ion-label>
+              <ion-icon name="color-fill"></ion-icon> Tipo de Cambustible</ion-label>
+            <ion-select [(ngModel)]="tcombustible">
+              <ion-option value="0">Magna</ion-option>
+              <ion-option value="1">Premium</ion-option>
+              <ion-option value="2">Diesel</ion-option>
+              <ion-option value="3">Gas</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>
+              <ion-icon name="flash"></ion-icon> Rendimiento km/L</ion-label>
+            <ion-input type="number" [(ngModel)]="rendimiento"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <button ion-button (click)="calcular()">Calcular</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

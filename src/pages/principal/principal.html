@@ -6,13 +6,36 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>principal</ion-title>
+  <ion-navbar color="madera">
+    <ion-title text-center>Bienvenido a Viajeros!</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <button ion-button (click)="ir()">Calcular</button>  
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+                <br>
+              <img src="../assets/imgs/logocompleto.png">
+              <br>
+              <br>
+              <br>
+              <br>
+              <p text-center>
+                Viajeros es una aplicación gratuita con el objetivo de que todos los usuarios puedan conocer sus costos de viaje al momento de elejir manejar ellos mismos.
+                Con nosotros vas a saber cual es la mejor ruta a tomar, para ello necesitamos tu consentimiento para acceder al GPS de tu dispositivo. Al dar clic en 'Aceptar' nos das tu consentimiento.
+              </p>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4 offset-4>
+              <button ion-button color="secondary" (click)="ir()">Aceptar</button>  
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
 </ion-content>
