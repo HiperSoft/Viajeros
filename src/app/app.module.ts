@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { RutaPage } from '../pages/ruta/ruta';
 import { Geolocation } from '@ionic-native/geolocation';
+import { PrincipalPage } from '../pages/principal/principal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    RutaPage
+    RutaPage,
+    PrincipalPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    RutaPage
+    RutaPage,
+    PrincipalPage
   ],
   providers: [
     StatusBar,

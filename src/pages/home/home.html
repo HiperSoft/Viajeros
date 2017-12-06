@@ -7,12 +7,12 @@
 <ion-content padding>
   
   <h1 class="text-center"> Viajeros</h1>
-  	<ion-item>
+  <ion-item>
 		<ion-label stacked>Origen</ion-label>
-        <ion-input type="text" [(ngModel)]="origen"></ion-input>
-        <button item-right ion-button (click)="getLocation()" icon-only >
-          <ion-icon name="locate"></ion-icon>
-        </button>
+    <ion-input type="text" [(ngModel)]="origen" id="origen"></ion-input>
+		<button item-right ion-button (click)="getLocation()" icon-only >
+			<ion-icon name="locate"></ion-icon>
+		</button>  
 	</ion-item>     
         <ion-item>
             <ion-label stacked> <ion-icon name="pin"></ion-icon> Destino</ion-label>

@@ -33,18 +33,20 @@ calcular(){
  
     
   constructor(public navCtrl: NavController,private geolocation: Geolocation) {
-    this.getLocation();
+    //this.getLocation();
   }
   getLocation(){   
     this.geolocation.getCurrentPosition().then((resp) => {
       var la=resp.coords.latitude;
       var lg=resp.coords.longitude;
-    console.log(resp.coords.latitude, resp.coords.longitude);
-    var geocoder = new google.maps.Geocoder;
-    this.origen = this.geocodeLatLng(geocoder,la,lg)
-  }).catch((error) => {
-    console.log('Error getting location', error);
-  });
+      console.log(resp.coords.latitude, resp.coords.longitude);
+      var geocoder = new google.maps.Geocoder;
+      this.origen = this.geocodeLatLng(geocoder,la,lg)
+      return this.origen;
+      }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+    console.log(this.origen);
   }
   /*f(){
   console.log(this.vehiculo);  
@@ -59,19 +61,19 @@ calcular(){
   }
     }*/
     geocodeLatLng(geocoder,la,lg) {
+      var org;
       var latlng = {
           lat: la,
           lng: lg
         };
         this.origen = geocoder.geocode({
         'location': latlng
-      },(results, status) => {
+      },(results,status) => {
         if (status === google.maps.GeocoderStatus.OK) {
           if (results[0]) {  
             console.log(results[0]);                      
             for (var ac = 0; ac < results[0].address_components.length; ac++) {
               var component = results[0].address_components[ac];
-              var org;
               switch(component.types[0]) {
                   case 'locality':
                        org=(component.long_name);
@@ -87,11 +89,12 @@ calcular(){
         } else {
           window.alert('Geocoder failed due to: ' + status);
         }
-        console.log(org);
         this.origen=org;
-        return org;
+        document.getElementById("origen").innerText=this.origen;
+        console.log('1.-'+this.origen);
+        return this.origen;
       });
-      console.log(this.origen);
-      return this.origen;      
+      console.log('2.-'+this.origen);
+      return this.origen=org;      
     }
 }
