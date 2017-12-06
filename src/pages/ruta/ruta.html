@@ -20,7 +20,7 @@
 
 <ion-content padding>
     <div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
-        <img src="../../assets/imgs/spinner2.gif">
+        <img src="../../assets/imgs/compass.gif">
     </div>
   <div class="container-fluid embed-responsive">
       <br>
@@ -50,11 +50,11 @@
               <ion-input [(ngModel)]="lcombus" type="num" disabled></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label floating>Costo por Litro de combustible:</ion-label>
+                <ion-label floating>Costo aproximado por Litro:</ion-label>
                 <ion-input [(ngModel)]="costlcombus" type="num" disabled></ion-input>
               </ion-item>
           <ion-item>
-              <ion-label floating>Costo de combustible:</ion-label>
+              <ion-label floating>Costo aproximado de combustible:</ion-label>
               <ion-input [(ngModel)]="costcombus" type="num" disabled></ion-input>
             </ion-item>
             <ion-item>
