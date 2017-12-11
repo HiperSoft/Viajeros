@@ -1,11 +1,7 @@
 <ion-header>
   <ion-navbar color="madera">
     <ion-title></ion-title>
-<<<<<<< HEAD
-    <img src="assets/imgs/logo.png">
-=======
-    <img center src="../assets/imgs/banner.png">
->>>>>>> ed590f3a5e920028b2a793c7240a2d0cd495becb
+    <img src="../assets/imgs/logo.png">
   </ion-navbar>
 </ion-header>
 
@@ -14,32 +10,32 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label stacked floating>Origen</ion-label>
+          <ion-label stacked>Origen</ion-label>
           <ion-input type="text" [(ngModel)]="origen" id="origen"></ion-input>
-          <button item-right ion-button (click)="getLocation()" icon-only clear>
+          <button item-right ion-button (click)="getLocation()" icon-only>
             <ion-icon name="locate"></ion-icon>
           </button>
         </ion-item>
         <ion-item>
-          <ion-label stacked floating>
+          <ion-label stacked>
             <ion-icon name="pin"></ion-icon> Destino</ion-label>
           <ion-input type="text" [(ngModel)]="destino"></ion-input>
         </ion-item>
         <ion-list>
           <ion-item>
             <ion-label>
-              <ion-icon name="car"></ion-icon> Tipo de vehículo</ion-label>
+              <ion-icon name="car"></ion-icon> Tipo de vehiculo</ion-label>
             <ion-select [(ngModel)]="vehiculo">
               <ion-option value="1">
-                <ion-icon name="car"></ion-icon> Automóvil</ion-option>
+                <ion-icon name="car"></ion-icon> Automovil</ion-option>
               <ion-option value="0">
                 <ion-icon name="bicycle"></ion-icon> Motocicleta</ion-option>
               <ion-option value="2">
-                <ion-icon name="bus"></ion-icon> Autobús dos ejes</ion-option>
+                <ion-icon name="bus"></ion-icon> Autobus dos ejes</ion-option>
               <ion-option value="3">
-                <ion-icon name="bus"></ion-icon> Autobús tres ejes</ion-option>
+                <ion-icon name="bus"></ion-icon> Autobus tres ejes</ion-option>
               <ion-option value="4">
-                <ion-icon name="bus"></ion-icon> Autobús cuatro ejes</ion-option>
+                <ion-icon name="bus"></ion-icon> Autobus cuatro ejes</ion-option>
               <ion-option value="5">Camión dos ejes</ion-option>
               <ion-option value="6">Camión tres ejes</ion-option>
               <ion-option value="7">Camión cuatro ejes</ion-option>
@@ -53,12 +49,12 @@
         </ion-list>
         <ion-item>
           <ion-label>
-            <ion-icon name="compass"></ion-icon> Tipo de ruta preferida (Cuando exista)</ion-label>
+            <ion-icon name="compass"></ion-icon> Tipo de Ruta</ion-label>
           <ion-select [(ngModel)]="truta">
             <ion-option value="0">
-              <ion-icon name="trending-up"></ion-icon>Libre</ion-option>
+              <ion-icon name="trending-up"></ion-icon> Preferentemente Libre</ion-option>
             <ion-option value="1">
-              <ion-icon name="logo-usd"></ion-icon>Cuota</ion-option>
+              <ion-icon name="logo-usd"></ion-icon> Preferentemente Cuota</ion-option>
             <ion-option value="2">
               <ion-icon name="star"></ion-icon> Ruta Sugerida</ion-option>
           </ion-select>
@@ -72,7 +68,7 @@
         <ion-list *ngIf="questioncombust">
           <ion-item>
             <ion-label>
-              <ion-icon name="color-fill"></ion-icon> Tipo de combustible</ion-label>
+              <ion-icon name="color-fill"></ion-icon> Tipo de Cambustible</ion-label>
             <ion-select [(ngModel)]="tcombustible">
               <ion-option value="0">Magna</ion-option>
               <ion-option value="1">Premium</ion-option>
@@ -87,7 +83,7 @@
           </ion-item>
         </ion-list>
 
-        <button col-4 offset-8 ion-button (click)="calcular()" round>Calcular</button>
+        <button ion-button (click)="calcular()">Calcular</button>
       </ion-col>
     </ion-row>
   </ion-grid>
