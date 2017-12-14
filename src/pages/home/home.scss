@@ -3,7 +3,14 @@ page-home {
         background-color: rgba(242,237,240,0);
     }
     ion-navbar img {
-        // height: 100%;
+        
+        height: auto; 
         width: 100%;
+        justify-content: center;
+    }
+    ion-navbar {
+        flex: auto;
+
+        height: 4rem;
     }
 }
