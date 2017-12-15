@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Headers, Http, Response } from '@angular/http';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import 'rxjs/Rx';
 //import {  GoogleMaps,  GoogleMap,  GoogleMapsEvent,  GoogleMapOptions,  CameraPosition,  MarkerOptions,  Marker } from '@ionic-native/google-maps';
 
@@ -43,7 +44,7 @@ export class RutaPage {
   questioncombust: any;
   cargando= false;
   truta: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public socialSharing:SocialSharing) {
     this.cargando=true;
     this.questioncombust=navParams.get('questioncombust');
     this.vehiculo=navParams.get('vehiculo');
@@ -181,4 +182,12 @@ export class RutaPage {
     console.log('ionViewDidLoad RutaPage');
   }
   
+  compartir(){
+// Share
+this.socialSharing.shareViaWhatsApp('Te invito a bajar esta app: ','http://i63.tinypic.com/2h3tq9i.png','https://goo.gl/z5Jiwc').then(() => {
+  // Success!
+}).catch(() => {
+  // Error!
+});
+  }
 }

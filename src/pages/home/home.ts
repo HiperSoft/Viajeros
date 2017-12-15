@@ -3,7 +3,8 @@ import { NavController } from 'ionic-angular';
 import { RutaPage } from '../ruta/ruta';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AlertController } from "ionic-angular";
-
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 declare const google: any;
 
@@ -19,8 +20,67 @@ export class HomePage {
   tcombustible: any;
   rendimiento: any;
   truta: any;
-
+  myForm: FormGroup;
+  gg1=false;
+  gg2=false;
+  tcomchange(){
+    console.log('combus');
+    this.setdata();
+    if (this.questioncombust==true){
+      if (this.myForm.get('tcombustible').value==""){
+      this.gg1=true;
+      (<HTMLInputElement> document.getElementById("btncalc")).disabled = true;
+      }
+    else if (this.myForm.get('rendimiento').value!="" && this.origen!="" && this.destino!="" && this.vehiculo!="" && this.truta!=""){
+      this.gg1=false;
+      (<HTMLInputElement> document.getElementById("btncalc")).disabled = false;
+      
+    }
+  }
+  }
+  rendimientochange(){
+    this.setdata();
+    if (this.questioncombust==true){
+      console.log(this.myForm.get('rendimiento'));
+      if (this.myForm.get('rendimiento').value==""){
+      this.gg2=true;
+      (<HTMLInputElement> document.getElementById("btncalc")).disabled = true;
+      
+      console.log('rendim');
+    }
+    else if (this.myForm.get('tcombustible').value!="" && this.origen!="" && this.destino!="" && this.vehiculo!="" && this.truta!=""){
+      this.gg2=false;
+      (<HTMLInputElement> document.getElementById("btncalc")).disabled = false;
+      
+    }
+  }
+  }
+  updatetoggle(){
+    this.setdata();
+    console.log(this.myForm.get('questioncombust').value)
+    this.questioncombust=this.myForm.get('questioncombust').value;
+    if (this.questioncombust==true){
+      if(this.myForm.get('rendimiento').value=="" || this.myForm.get('tcombustible').value=="" ){
+        (<HTMLInputElement> document.getElementById("btncalc")).disabled = true;
+      }else if(this.origen!="" && this.destino!="" && this.vehiculo!="" && this.truta!=""){
+        (<HTMLInputElement> document.getElementById("btncalc")).disabled = false; 
+      }
+    }else if(this.origen!="" && this.destino!="" && this.vehiculo!="" && this.truta!=""){
+      (<HTMLInputElement> document.getElementById("btncalc")).disabled = false;      
+    }
+    
+  }
+  setdata(){
+    this.origen=this.myForm.get('origen').value;
+    this.destino=this.myForm.get('destino').value;
+    this.vehiculo=this.myForm.get('vehiculo').value;    
+    this.questioncombust=this.myForm.get('questioncombust').value;  
+    this.tcombustible=this.myForm.get('tcombustible').value;  
+    this.rendimiento=this.myForm.get('rendimiento').value;  
+    this.truta=this.myForm.get('truta').value;      
+  }
   calcular() {
+    this.setdata();
     console.log(
       "vehiculo: " +
         this.vehiculo +
@@ -52,12 +112,25 @@ export class HomePage {
     });
   }
 
-  constructor(
+  constructor(public fb: FormBuilder,
     public navCtrl: NavController,
     private geolocation: Geolocation,
     public alertCtrl: AlertController
   ) {
     //this.getLocation();
+    this.myForm = this.fb.group({
+      origen: ['', [Validators.required]],
+      destino: ['', [Validators.required]],
+      vehiculo: ['', [Validators.required]],
+      truta: ['', [Validators.required]],
+      tcombustible: ['', []],
+      rendimiento: ['', []],
+      questioncombust: ['', []],
+    });
+    this.myForm.patchValue({
+      questioncombust: false, 
+      // formControlName2: myValue2 (can be omitted)
+    });
   }
   showAlert() {
     let alert = this.alertCtrl.create({
@@ -128,7 +201,11 @@ export class HomePage {
           window.alert("Geocoder failed due to: " + status);
         }
         this.origen = org;
-        document.getElementById("origen").innerText = this.origen;
+        this.myForm.patchValue({
+          origen: this.origen, 
+          // formControlName2: myValue2 (can be omitted)
+        });
+        //document.getElementById("origen").innerText = this.origen;
         console.log("1.-" + this.origen);
         return this.origen;
       }
