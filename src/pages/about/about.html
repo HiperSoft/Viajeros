@@ -1,11 +1,97 @@
 <ion-header>
   <ion-navbar color="madera">
     <ion-title>
-      Acerca de
+      Ayuda
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <a href="https://www.vexels.com/vectores/vista-previa/137756/silueta-de-dos-palmeras"> Silueta de dos palmeras </a> | designed by Vexels
+  <ion-grid color="agua">
+    <ion-row>
+      <ion-col col-12>
+
+        <p>Para comenzar hay que hacer clic en el botón de “Aceptar” </p>
+        <button ion-button color="secondary">Aceptar</button>
+        <p>Enseguida aparecerá la ventana para elegir un punto de partida, en caso de que sea desde la ciudad actual entonces
+          recomendamos que des clic en
+          <ion-icon name="locate"></ion-icon> y aparecerá tu ciudad actual.</p>
+        <ion-item>
+          <ion-label stacked floating>Origen</ion-label>
+          <ion-input type="text"></ion-input>
+          <button item-right ion-button icon-only clear>
+            <ion-icon name="locate"></ion-icon>
+          </button>
+        </ion-item>
+        <p>Nuestro siguiente campo es el punto deseado para concluir el viaje, aquí solo hay que poner la ciudad de destino.</p>
+        <img src="assets/imgs/ayuda/3.png">
+        <p>Ya sea que el viaje se quiera realizar en Moto, Auto, Autobús, o Camión de cualquier tipo, solo abra que seleccionarlo.</p>
+        <ion-item>
+          <ion-label>
+            <ion-icon name="car"></ion-icon> Tipo de vehículo</ion-label>
+          <ion-select>
+            <ion-option value="1">
+              <ion-icon name="car"></ion-icon> Automóvil</ion-option>
+            <ion-option value="0">
+              <ion-icon name="bicycle"></ion-icon> Motocicleta</ion-option>
+            <ion-option value="2">
+              <ion-icon name="bus"></ion-icon>Autobús</ion-option>
+            <ion-option value="3">
+              <ion-icon name="bus"></ion-icon>Trailer</ion-option>
+          </ion-select>
+        </ion-item>
+        <p>Elige el tipo de carretera que quieras agarrar</p>
+        <ion-item>
+          <ion-label>
+            <ion-icon name="compass"></ion-icon> Ruta preferida</ion-label>
+          <ion-select>
+            <ion-option>
+              <ion-icon name="trending-up"></ion-icon>Libre</ion-option>
+            <ion-option>
+              <ion-icon name="logo-usd"></ion-icon>De paga</ion-option>
+            <ion-option>
+              <ion-icon name="star"></ion-icon> Ruta Sugerida</ion-option>
+          </ion-select>
+        </ion-item>
+        <p>De forma opcional puedes hacer el calculo de combustible de tu vehículo, con precios aproximados (que pueden diferir
+          en ciertas zonas)</p>
+        <ion-item>
+          <ion-label>
+            <ion-icon name="speedometer"></ion-icon> Calcular combustible</ion-label>
+          <ion-toggle checked="false"></ion-toggle>
+        </ion-item>
+        <p>Tendrás la oportunidad de poner el combustible que use tu vehículo</p>
+        <img src="assets/imgs/ayuda/6.png">
+        <p>Por último, y para hacer un cálculo sobre el rendimiento en carretera de tu vehículo con el combustible te pedimos
+          que pongas el rendimiento por litro. En caso de que no sepas cuanto rinde tu vehículo te sugerimos que busques
+          en internet y para obtener mejores resultados de precios del viaje en total.</p>
+        <img src="assets/imgs/ayuda/7.png">
+        <p>Ahora solo queda darle al botón de “Calcular”</p>
+        <button ion-button round>Calcular</button>
+        <p>Mientras se genera la ruta veras la siguiente pantalla de carga:</p>
+        <img src="assets/imgs/compass.gif" style="height: 10rem; width: auto;">
+        <p>Listo, la ruta se generó correctamente, ya puedes ver todos los detalles. Si quieres ver por cual carretera se generó
+          la ruta puedes hacer clic en el botón de
+          <ion-icon name="md-expand"></ion-icon>
+        </p>
+        <img src="assets/imgs/ayuda/8.png">
+
+        <p>Dentro de esta ventana puedes darle clic al botón de
+          <ion-icon name="share"></ion-icon> y podrás enviar por redes sociales un enlace para compartir la aplicación con tus amigos. <ion-icon name="appstore"></ion-icon></p>
+
+
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+
+        Califícanos con 5
+        <ion-icon color="amarillo" name="star"></ion-icon> si te gustó.
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <!-- <a href="https://www.vexels.com/vectores/vista-previa/137756/silueta-de-dos-palmeras"> Silueta de dos palmeras </a> | designed by Vexels -->
 </ion-content>
