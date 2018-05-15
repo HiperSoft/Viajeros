@@ -9,7 +9,7 @@
   <ion-navbar color="madera">
     <ion-title>Ruta calculada</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only color="royal">
+        <button ion-button icon-only color="royal" (click)="compartir()">
           <ion-icon name="share"></ion-icon>
         </button>
       </ion-buttons>
@@ -20,7 +20,7 @@
 
 <ion-content padding>
     <div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
-        <img src="../../assets/imgs/compass.gif">
+        <img src="assets/imgs/compass.gif">
     </div>
   <div class="container-fluid embed-responsive">
       <br>

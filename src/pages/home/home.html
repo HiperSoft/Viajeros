@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="madera">
     <ion-title></ion-title>
-    <img center src="../assets/imgs/banner.png">
+    <img center src="assets/imgs/banner.png">
   </ion-navbar>
 </ion-header>
 
@@ -9,23 +9,32 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <form [formGroup]="myForm" (ngSubmit)="calcular()" novalidate>
+              
         <ion-item>
           <ion-label stacked floating>Origen</ion-label>
-          <ion-input type="text" [(ngModel)]="origen" id="origen"></ion-input>
-          <button item-right ion-button (click)="getLocation()" icon-only clear>
+          <ion-input type="text" formControlName="origen" id="origen" ></ion-input>
+          <button item-right ion-button (click)="getLocation()" type="button" icon-only clear>
             <ion-icon name="locate"></ion-icon>
           </button>
         </ion-item>
+        <ion-item *ngIf="myForm.controls.origen.errors && myForm.controls.origen.dirty">
+            <p color="danger" ion-text *ngIf="myForm.controls.origen.hasError('required')">¡Campo Origen es Requerido!</p>
+          </ion-item>
         <ion-item>
           <ion-label stacked floating>
             <ion-icon name="pin"></ion-icon> Destino</ion-label>
-          <ion-input type="text" [(ngModel)]="destino"></ion-input>
+          <ion-input type="text" formControlName="destino"></ion-input>
         </ion-item>
+        <ion-item *ngIf="myForm.controls.destino.errors && myForm.controls.destino.dirty">
+            <p color="danger" ion-text *ngIf="myForm.controls.destino.hasError('required')">¡Campo Destino es Requerido!</p>
+          </ion-item>
+
         <ion-list>
           <ion-item>
             <ion-label>
               <ion-icon name="car"></ion-icon> Tipo de vehículo</ion-label>
-            <ion-select [(ngModel)]="vehiculo">
+            <ion-select formControlName="vehiculo">
               <ion-option value="1">
                 <ion-icon name="car"></ion-icon> Automóvil</ion-option>
               <ion-option value="0">
@@ -46,11 +55,14 @@
               <ion-option value="12">Camión nueve ejes</ion-option>
             </ion-select>
           </ion-item>
+          <ion-item *ngIf="myForm.controls.vehiculo.errors && myForm.controls.vehiculo.dirty">
+              <p color="danger" ion-text *ngIf="myForm.controls.vehiculo.hasError('required')">¡Campo Vehiculo es Requerido!</p>
+            </ion-item>
         </ion-list>
         <ion-item>
           <ion-label>
             <ion-icon name="compass"></ion-icon> Tipo de ruta preferida (Cuando exista)</ion-label>
-          <ion-select [(ngModel)]="truta">
+          <ion-select formControlName="truta">
             <ion-option value="0">
               <ion-icon name="trending-up"></ion-icon>Libre</ion-option>
             <ion-option value="1">
@@ -59,33 +71,45 @@
               <ion-icon name="star"></ion-icon> Ruta Sugerida</ion-option>
           </ion-select>
         </ion-item>
+        <ion-item *ngIf="myForm.controls.truta.errors && myForm.controls.truta.dirty">
+            <p color="danger" ion-text *ngIf="myForm.controls.truta.hasError('required')">¡Campo Tipo De Ruta es Requerido!</p>
+          </ion-item>
+
 
         <ion-item>
           <ion-label>
             <ion-icon name="speedometer"></ion-icon> Calcular combustible</ion-label>
-          <ion-toggle checked="false" [(ngModel)]="questioncombust"></ion-toggle>
+          <ion-toggle checked="false" formControlName="questioncombust" (ionChange)="updatetoggle()"></ion-toggle>
         </ion-item>
         <ion-list *ngIf="questioncombust">
           <ion-item>
             <ion-label>
               <ion-icon name="color-fill"></ion-icon> Tipo de combustible</ion-label>
-            <ion-select [(ngModel)]="tcombustible">
+            <ion-select formControlName="tcombustible" (ionChange)="tcomchange()">
               <ion-option value="0">Magna</ion-option>
               <ion-option value="1">Premium</ion-option>
               <ion-option value="2">Diesel</ion-option>
               <ion-option value="3">Gas</ion-option>
             </ion-select>
           </ion-item>
+          <ion-item *ngIf="gg1">
+              <p color="danger" ion-text *ngIf="gg1" >¡Campo Tipo De Combustible es Requerido!</p>
+            </ion-item>
           <ion-item>
             <ion-label stacked>
               <ion-icon name="flash"></ion-icon> Rendimiento km/L</ion-label>
-            <ion-input type="number" [(ngModel)]="rendimiento"></ion-input>
+            <ion-input type="number" formControlName="rendimiento" (ionChange)="rendimientochange()"></ion-input>
           </ion-item>
+          <ion-item *ngIf="gg2">
+              <p color="danger" ion-text *ngIf="gg2">¡Campo Redimiento es Requerido!</p>
+            </ion-item>
         </ion-list>
 
-        <button col-4 offset-8 ion-button (click)="calcular()" round>Calcular</button>
+        <button id="btncalc" col-4 offset-8 ion-button type="submit" [disabled]="myForm.invalid" round>Calcular</button>
+      </form> 
       </ion-col>
     </ion-row>
   </ion-grid>
+
 
 </ion-content>

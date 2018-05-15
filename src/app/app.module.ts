@@ -15,7 +15,7 @@ import { PrincipalPage } from '../pages/principal/principal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 
  
 @NgModule({
@@ -44,6 +44,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PrincipalPage
   ],
   providers: [
+    SocialSharing,
     StatusBar,
     SplashScreen,
     Geolocation,    
