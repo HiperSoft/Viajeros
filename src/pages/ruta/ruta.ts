@@ -43,6 +43,7 @@ export class RutaPage {
   questioncombust: any;
   cargando= false;
   truta: any;
+  data4:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.cargando=true;
     this.questioncombust=navParams.get('questioncombust');
@@ -71,14 +72,17 @@ export class RutaPage {
         console.log(this.combustibles);
     this.ApiSakbeJson(this.origen).subscribe(valor => {this.orig = valor[0]
       this.ApiSakbeJson(this.destino).subscribe(valor2 => {this.dest = valor2[0]
-        this.getdata().subscribe(valor3 => {this.data = valor3[0]
-          var la=23.634501;
-          var lg=-102.55278399999997;
+        this.getdata1().subscribe(valor3 => {this.data = valor3[0]
+          this.getdata2().subscribe(valor4 => {this.data4 = valor4[0]
+            this.orig=(JSON.parse(valor[0].geojson));
+            //console.log();
+          var la=this.orig.coordinates[1];
+          var lg=this.orig.coordinates[0];
           var latLng: any;
           latLng = new google.maps.LatLng(la, lg);
           let mapProp = {
               center: latLng,
-              zoom: 5,
+              zoom: 7,
               mapTypeId: google.maps.MapTypeId.ROADMAP
           };
           let map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
@@ -87,27 +91,46 @@ export class RutaPage {
               infowindow.close();
           });
           map.data.addListener('click', function (event) {
+            try{
               var myHTML = event.feature.getProperty("content");
               infowindow.setContent("<div style='width:150px; text-align: center;'>" + myHTML + "</div>");
               infowindow.setPosition(event.feature.getGeometry().get());
               infowindow.setOptions({
                   pixelOffset: new google.maps.Size(0, -30)
               });
-              infowindow.open(map);
+              infowindow.open(map);}
+              catch(e){
+                
+              }
           });
           var jsonDataOrigen = '{"type": "FeatureCollection","features": [{"type": "Feature","properties": {"icon": "circulo","id-intern": "1235","name": "Bellevue","content": "Punto de Partida(Origen)"},"geometry":' + valor[0].geojson + '}]}';
-          var jsonDataDestino = '{"type": "FeatureCollection","features": [{"type": "Feature","properties": {"id-intern": "1236","name": "Titel","content": "Destino"},"geometry":' + valor2[0].geojson + '}]}';
-          var jsonData = '{"type": "FeatureCollection","features": [{"type": "Feature","properties": {},"geometry":' + valor3[0].geojson + '}]}';
+          var jsonDataDestino = '{"type": "FeatureCollection","features": [{"type": "Feature","properties": {"id-intern": "3216","name": "GG","content": "Destino"},"geometry":' + valor2[0].geojson + '}]}';
+          //console.log(valor2[0].geojson);
           map.data.addGeoJson(JSON.parse(jsonDataOrigen));
           map.data.addGeoJson(JSON.parse(jsonDataDestino));
+          let contador_casetas=0;
+          for(let i=0; i<valor4.length; i++){
+            var jsonData = '{"type": "FeatureCollection","features": [{"type": "Feature","properties": {},"geometry":' + valor4[i].geojson + '}]}';
+            if(valor4[i].punto_caseta!=null){
+              contador_casetas=contador_casetas+1;
+              console.log(valor4[i].punto_caseta);
+              console.log(valor4[i].direccion);
+              var caseta = '{"type": "FeatureCollection","features": [{"type": "Feature","properties": {"icon": "caseta","id-intern": "1236","name": "Caseta","content":"Caseta #'+contador_casetas+',  '+(valor4[i].direccion).toString() +',   Costo Caseta= $'+valor4[i].costo_caseta+' MXN '+'"},"geometry":' + valor4[i].punto_caseta + '}]}';
+              map.data.addGeoJson(JSON.parse(caseta));
+            }
             map.data.addGeoJson(JSON.parse(jsonData));
+          }
+        // console.log(valor3[0].geojson);
+          
+           
             map.data.setStyle(function(feature) {
               var icon = feature.getProperty('icon');
               console.log(icon);
               if (icon === 'circulo') {return {icon: {strokeColor: 'grid', path: google.maps.SymbolPath.CIRCLE, scale: 5}}
-              }else { return {strokeColor: 'blue'} }
+              }else  if (icon === 'caseta'){return {icon: {url: "../assets/caseta.png"}}}
+              else{ return {strokeColor: 'blue'} }
           });
-          console.log(JSON.parse(jsonData));
+          //console.log(JSON.parse(jsonData));
           this.costcasetas=valor3[0].costo_caseta;
           this.distancia=valor3[0].long_km;
           valor3[0].tiempo_min = Math.floor(valor3[0].tiempo_min);
@@ -129,6 +152,7 @@ export class RutaPage {
           this.cargando=false;
         });
     });
+  });
     });
   });
   }
@@ -138,8 +162,8 @@ export class RutaPage {
     //console.log(this.json1);
     return this.json1;
   }
-  getdata() {   
-    var urlApiBusqueda = "http://gaia.inegi.org.mx/sakbe/wservice?make=CR&dest_i=#orig&dest_f=#dest&p=#truta&v=#vehiculo&e=0&type=json&key=BszOJ8j5-Snwo-I9K5-bBC1-3ZmQkliBa3NC";   
+  getdata2() {   
+    var urlApiBusqueda = "http://gaia.inegi.org.mx/sakbe/wservice?make=GD&dest_i=#orig&dest_f=#dest&p=#truta&v=#vehiculo&e=0&type=json&key=BszOJ8j5-Snwo-I9K5-bBC1-3ZmQkliBa3NC";   
     var token = 'BszOJ8j5-Snwo-I9K5-bBC1-3ZmQkliBa3NC';
     var urlApiBusquedaTmp = urlApiBusqueda.replace('#orig', this.orig.id_dest);
     urlApiBusquedaTmp = urlApiBusquedaTmp.replace('#dest', this.dest.id_dest);
@@ -153,6 +177,22 @@ export class RutaPage {
     this.json1 = this.http.get(urlApiBusquedaTmp).map( res => res.json());
     console.log(this.json1);
     return this.json1;
+}
+getdata1() {   
+  var urlApiBusqueda = "http://gaia.inegi.org.mx/sakbe/wservice?make=CR&dest_i=#orig&dest_f=#dest&p=#truta&v=#vehiculo&e=0&type=json&key=BszOJ8j5-Snwo-I9K5-bBC1-3ZmQkliBa3NC";   
+  var token = 'BszOJ8j5-Snwo-I9K5-bBC1-3ZmQkliBa3NC';
+  var urlApiBusquedaTmp = urlApiBusqueda.replace('#orig', this.orig.id_dest);
+  urlApiBusquedaTmp = urlApiBusquedaTmp.replace('#dest', this.dest.id_dest);
+  //urlApiBusquedaTmp = urlApiBusquedaTmp.replace('#prioridad', this.prioridad);
+  urlApiBusquedaTmp = urlApiBusquedaTmp.replace('#truta', this.truta);
+  urlApiBusquedaTmp = urlApiBusquedaTmp.replace('#vehiculo', this.vehiculo);
+  
+  //console.log(this.orig.id_dest, this.dest.id_dest,this.prioridad)
+  //urlApiBusquedaTmp = urlApiBusquedaTmp.replace('#token', token);
+  console.log(urlApiBusquedaTmp);
+  this.json1 = this.http.get(urlApiBusquedaTmp).map( res => res.json());
+  console.log(this.json1);
+  return this.json1;
 }
   ApiSakbeJson(valor) {
     var urlApiBusqueda = "http://gaia.inegi.org.mx/sakbe/wservice?make=SD&buscar=#buscar&key=BszOJ8j5-Snwo-I9K5-bBC1-3ZmQkliBa3NC&type=json";   
