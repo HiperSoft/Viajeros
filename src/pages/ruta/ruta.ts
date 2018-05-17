@@ -44,12 +44,8 @@ export class RutaPage {
   questioncombust: any;
   cargando= false;
   truta: any;
-<<<<<<< HEAD
   data4:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-=======
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public socialSharing:SocialSharing) {
->>>>>>> b788f4b8261055a8f28f409bb116856dc4e497ae
     this.cargando=true;
     this.questioncombust=navParams.get('questioncombust');
     this.vehiculo=navParams.get('vehiculo');
