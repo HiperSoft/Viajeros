@@ -128,7 +128,7 @@ export class RutaPage {
               var icon = feature.getProperty('icon');
               console.log(icon);
               if (icon === 'circulo') {return {icon: {strokeColor: 'grid', path: google.maps.SymbolPath.CIRCLE, scale: 5}}
-              }else  if (icon === 'caseta'){return {icon: {url: "../assets/caseta.png"}}}
+              }else  if (icon === 'caseta'){return {icon: {url: "assets/caseta.png"}}}
               else{ return {strokeColor: 'blue'} }
           });
           //console.log(JSON.parse(jsonData));
@@ -224,7 +224,7 @@ getdata1() {
   
   compartir(){
 // Share
-this.socialSharing.shareViaWhatsApp('Te invito a bajar esta app: ','http://i63.tinypic.com/2h3tq9i.png','https://goo.gl/z5Jiwc').then(() => {
+this.socialSharing.shareViaWhatsApp('Te invito a bajar esta app: ','http://i63.tinypic.com/2h3tq9i.png','https://play.google.com/store/apps/details?id=com.hipersoft.viajeros').then(() => {
   // Success!
 }).catch(() => {
   // Error!
