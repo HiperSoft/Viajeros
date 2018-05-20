@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import 'rxjs/Rx';
 //import {  GoogleMaps,  GoogleMap,  GoogleMapsEvent,  GoogleMapOptions,  CameraPosition,  MarkerOptions,  Marker } from '@ionic-native/google-maps';
@@ -224,7 +224,7 @@ getdata1() {
   
   compartir(){
 // Share
-this.socialSharing.shareViaWhatsApp('Te invito a bajar esta app: ','http://i63.tinypic.com/2h3tq9i.png','https://play.google.com/store/apps/details?id=com.hipersoft.viajeros').then(() => {
+this.socialSharing.shareViaWhatsApp('¿Vas a viajar? Usala para saber cuanto te va a costar: ','http://i63.tinypic.com/2h3tq9i.png','https://play.google.com/store/apps/details?id=com.hipersoft.viajeros').then(() => {
   // Success!
 }).catch(() => {
   // Error!

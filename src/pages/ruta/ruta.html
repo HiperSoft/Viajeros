@@ -27,46 +27,53 @@
           <div class="d-flex justify-content-center">
               <div id="googleMap" style="width: 100%;height: 250px;border: 0; overflow: visible;"></div>
       </div>
-    <ion-list>      
-          <ion-item>
-            <ion-label floating>Costo de casetas:</ion-label>
-            <ion-input [(ngModel)]="costcasetas" type="num" disabled></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Distancia Km: </ion-label>
-            <ion-input [(ngModel)]="distancia" type="num" disabled></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Tiempo Estimado Del Viaje </ion-label>
-            <ion-input [(ngModel)]="tiempo" type="text" disabled></ion-input>
-          </ion-item>
-          <ion-list *ngIf="questioncombust">            
-          <ion-item>
-            <ion-label floating>Tipo de Combustible</ion-label>
-            <ion-input [(ngModel)]="tipocombus" type="text" disabled></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label floating>Litros de combustible:</ion-label>
-              <ion-input [(ngModel)]="lcombus" type="num" disabled></ion-input>
+      <ion-grid>
+        <ion-row justify-content-center>
+          <ion-col col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3>
+          <ion-list *ngIf="!cargando">
+            <ion-item>
+              <ion-label floating>Costo de casetas:</ion-label>
+              <ion-input [(ngModel)]="costcasetas" type="num" disabled></ion-input>
             </ion-item>
             <ion-item>
+              <ion-label floating>Distancia Km: </ion-label>
+              <ion-input [(ngModel)]="distancia" type="num" disabled></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Tiempo Estimado Del Viaje </ion-label>
+              <ion-input [(ngModel)]="tiempo" type="text" disabled></ion-input>
+            </ion-item>
+            <ion-list *ngIf="questioncombust">
+              <ion-item>
+                <ion-label floating>Tipo de Combustible</ion-label>
+                <ion-input [(ngModel)]="tipocombus" type="text" disabled></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>Litros de combustible:</ion-label>
+                <ion-input [(ngModel)]="lcombus" type="num" disabled></ion-input>
+              </ion-item>
+              <ion-item>
                 <ion-label floating>Costo aproximado por Litro:</ion-label>
                 <ion-input [(ngModel)]="costlcombus" type="num" disabled></ion-input>
               </ion-item>
-          <ion-item>
-              <ion-label floating>Costo aproximado de combustible:</ion-label>
-              <ion-input [(ngModel)]="costcombus" type="num" disabled></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating>Rendimiento</ion-label>
-              <ion-input [(ngModel)]="rendimiento" type="num" disabled></ion-input>
-            </ion-item>
-            <ion-item>
+              <ion-item>
+                <ion-label floating>Costo aproximado de combustible:</ion-label>
+                <ion-input [(ngModel)]="costcombus" type="num" disabled></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>Rendimiento</ion-label>
+                <ion-input [(ngModel)]="rendimiento" type="num" disabled></ion-input>
+              </ion-item>
+              <ion-item>
                 <ion-label floating>Costo total Aproximado:</ion-label>
                 <ion-input [(ngModel)]="costtot" type="num" disabled></ion-input>
               </ion-item>
             </ion-list>
-        </ion-list>
+          </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
   </div>  
 
   
