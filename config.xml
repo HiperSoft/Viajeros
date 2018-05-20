@@ -2,14 +2,14 @@
 <widget id="com.hipersoft.viajeros" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Viajeros</name>
     <description>Para la toma de decisiones.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">HiperSoft</author>
+    <author email="softwarehiper@gmail.com" href="http://hipersoft.github.io/viajeros">HiperSoft</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
+    <allow-intent href="tel:" />
+    <allow-intent href="sms:" />
+    <allow-intent href="mailto:hiperemmanuel@gmail.com" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
@@ -21,7 +21,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="loadUrlTimeoutValue" value="900000" />
     <platform name="android">
-        <allow-intent href="market:*" />
+        <allow-intent href="market:https://play.google.com/store/apps/details?id=com.hipersoft.viajeros" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
